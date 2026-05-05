@@ -11,7 +11,7 @@ Requires **Python 3.10+** (the npm package shells out to a bundled Python script
 ### Via npm (recommended)
 
 ```bash
-npm install -g @winter279/goclaw-homeharvest-cli
+npm install -g goclaw-homeharvest-cli
 ```
 
 The `postinstall` step auto-installs the Python `homeharvest` dep via `pip --user`. If your Python is PEP 668-locked (e.g. Homebrew), it falls back to `--break-system-packages`. To skip the auto-install, set `GOCLAW_HOMEHARVEST_SKIP_POSTINSTALL=1` and run `pip install homeharvest>=0.4.10` yourself (preferably inside a venv).

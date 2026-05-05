@@ -29,7 +29,24 @@ if (!fs.existsSync(SCRIPT)) {
   process.exit(1);
 }
 
-const child = spawn(py, [SCRIPT, ...process.argv.slice(2)], { stdio: 'inherit' });
+// Build env — auto-fix PYTHONPATH if homeharvest installed in non-standard pip --user dir
+// (e.g. sandboxed runtimes where pip writes to PYTHONUSERBASE that Python doesn't auto-resolve).
+const childEnv = { ...process.env };
+const findSpec = spawnSync(py, ['-c', 'import importlib.util,sys; sys.exit(0 if importlib.util.find_spec("homeharvest") else 1)'], { stdio: 'ignore' });
+if (findSpec.status !== 0) {
+  const show = spawnSync(py, ['-m', 'pip', 'show', 'homeharvest'], { encoding: 'utf8' });
+  const m = show.stdout && show.stdout.match(/^Location:\s*(.+)$/m);
+  if (m && m[1]) {
+    const loc = m[1].trim();
+    childEnv.PYTHONPATH = childEnv.PYTHONPATH ? `${loc}${path.delimiter}${childEnv.PYTHONPATH}` : loc;
+  } else {
+    console.error('[goclaw-homeharvest] ERROR: Python module "homeharvest" not found.');
+    console.error('Install it: pip install "homeharvest>=0.4.10"');
+    process.exit(1);
+  }
+}
+
+const child = spawn(py, [SCRIPT, ...process.argv.slice(2)], { stdio: 'inherit', env: childEnv });
 child.on('exit', (code, signal) => {
   if (signal) process.kill(process.pid, signal);
   else process.exit(code ?? 1);

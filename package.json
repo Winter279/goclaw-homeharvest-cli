@@ -1,6 +1,6 @@
 {
-  "name": "@winter279/goclaw-homeharvest-cli",
-  "version": "0.1.0",
+  "name": "goclaw-homeharvest-cli",
+  "version": "0.1.1",
   "description": "Node CLI wrapper for HomeHarvest (Realtor.com listing scraper). Shells out to a bundled Python script. JSON-friendly for AI agents (GoClaw).",
   "bin": {
     "goclaw-homeharvest": "./bin/goclaw-homeharvest.js"
