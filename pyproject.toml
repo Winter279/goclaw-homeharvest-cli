@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goclaw-homeharvest-cli"
+version = "0.1.0"
+description = "CLI wrapper for HomeHarvest — scrape Realtor.com listings, JSON-friendly for AI agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Winter279" }]
+keywords = ["realtor", "real-estate", "scraper", "homeharvest", "cli", "goclaw", "ai-agent"]
+dependencies = [
+    "homeharvest>=0.4.10",
+]
+
+[project.scripts]
+goclaw-homeharvest = "goclaw_homeharvest.cli:main"
+
+[project.urls]
+Repository = "https://github.com/Winter279/goclaw-homeharvest-cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
