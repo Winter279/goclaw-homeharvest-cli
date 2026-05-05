@@ -6,18 +6,26 @@ CLI wrapper around [HomeHarvest](https://github.com/ZacharyHampton/HomeHarvest) 
 
 ## Install
 
-Requires Python 3.10+.
+Requires **Python 3.10+** (the npm package shells out to a bundled Python script).
+
+### Via npm (recommended)
+
+```bash
+npm install -g @winter279/goclaw-homeharvest-cli
+```
+
+The `postinstall` step auto-installs the Python `homeharvest` dep via `pip --user`. If your Python is PEP 668-locked (e.g. Homebrew), it falls back to `--break-system-packages`. To skip the auto-install, set `GOCLAW_HOMEHARVEST_SKIP_POSTINSTALL=1` and run `pip install homeharvest>=0.4.10` yourself (preferably inside a venv).
+
+To point the shim at a specific Python binary:
+
+```bash
+export GOCLAW_HOMEHARVEST_PYTHON=/path/to/venv/bin/python
+```
+
+### Via pip (Python-only)
 
 ```bash
 pip install git+https://github.com/Winter279/goclaw-homeharvest-cli
-```
-
-Or local editable install:
-
-```bash
-git clone https://github.com/Winter279/goclaw-homeharvest-cli
-cd goclaw-homeharvest-cli
-pip install -e .
 ```
 
 ## Usage

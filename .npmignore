@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+plans/
+docs/
+pyproject.toml
+*.egg-info/

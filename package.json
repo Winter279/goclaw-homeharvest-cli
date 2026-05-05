@@ -1,0 +1,43 @@
+{
+  "name": "@winter279/goclaw-homeharvest-cli",
+  "version": "0.1.0",
+  "description": "Node CLI wrapper for HomeHarvest (Realtor.com listing scraper). Shells out to a bundled Python script. JSON-friendly for AI agents (GoClaw).",
+  "bin": {
+    "goclaw-homeharvest": "./bin/goclaw-homeharvest.js"
+  },
+  "files": [
+    "bin",
+    "scripts",
+    "src/goclaw_homeharvest",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "realtor",
+    "real-estate",
+    "homeharvest",
+    "scraper",
+    "cli",
+    "goclaw",
+    "ai-agent"
+  ],
+  "license": "MIT",
+  "author": "Winter279",
+  "homepage": "https://github.com/Winter279/goclaw-homeharvest-cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Winter279/goclaw-homeharvest-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Winter279/goclaw-homeharvest-cli/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

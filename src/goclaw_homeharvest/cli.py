@@ -11,7 +11,10 @@ from typing import Any
 
 from homeharvest import scrape_property
 
-from . import __version__
+try:
+    from . import __version__
+except ImportError:  # standalone execution (e.g. spawned by Node shim)
+    __version__ = "0.1.0"
 
 LISTING_TYPES = [
     "for_sale",
